@@ -1,0 +1,35 @@
+{
+  "name": "@kichiyaki/react-native-barcode-generator",
+  "version": "0.6.0",
+  "license": "MIT",
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "author": "Kichiyaki <dawidwysokinski000@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kichiyaki/react-native-barcode-generator"
+  },
+  "bugs": {
+    "url": "https://github.com/Kichiyaki/react-native-barcode-generator/issues"
+  },
+  "keywords": [
+    "react-native",
+    "generator",
+    "barcode"
+  ],
+  "dependencies": {
+    "jsbarcode": "^3.8.0",
+    "react-native-svg": "^12.1.0"
+  },
+  "peerDependencies": {
+    "react-native": ">=0.62.0"
+  },
+  "devDependencies": {
+    "@react-native-community/eslint-config": "^2.0.0",
+    "@types/react": "^17.0.0",
+    "@types/react-native": "^0.63.45",
+    "eslint": "^7.17.0",
+    "eslint-config-prettier": "^7.1.0",
+    "prettier": "^2.2.1"
+  }
+}
