@@ -13,6 +13,7 @@ const Barcode = ({
   text,
   textStyle,
   style,
+  onError,
 }) => {
   const drawRect = (x, y, width, height) => {
     return `M${x},${y}h${width}v${height}h-${width}z`;
@@ -55,7 +56,7 @@ const Barcode = ({
 
   const encode = (text, Encoder) => {
     if (typeof text !== 'string' || text.length === 0) {
-      console.error('Barcode value must be a non-empty string');
+      throw new Error('Barcode value must be a non-empty string');
     }
     const encoder = new Encoder(text, {
       width,
@@ -66,20 +67,33 @@ const Barcode = ({
       flat: true,
     });
     if (!encoder.valid()) {
-      console.error('Invalid barcode for selected format.');
+      throw new Error('Invalid barcode for selected format.');
     }
     return encoder.encode();
   };
 
   const { bars, barCodeWidth } = useMemo(() => {
-    const encoder = barcodes[format];
-    if (!encoder) {
-      console.error('Invalid barcode format.');
+    try {
+      const encoder = barcodes[format];
+      if (!encoder) {
+        throw new Error('Invalid barcode format.');
+      }
+      const encoded = encode(value, encoder);
+      return {
+        bars: drawSvgBarCode(encoded),
+        barCodeWidth: encoded.data.length * width,
+      };
+    } catch (error) {
+      if (__DEV__) {
+        console.error(error.message);
+      }
+      if (onError) {
+        onError(error);
+      }
     }
-    const encoded = encode(value, encoder);
     return {
-      bars: drawSvgBarCode(encoded),
-      barCodeWidth: encoded.data.length * width,
+      bars: [],
+      barCodeWidth: 0,
     };
   }, [value, width, height, format, lineColor, background]);
 

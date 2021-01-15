@@ -13,14 +13,13 @@ const App = () => {
         value="0123456789012"
         text="0123456789012"
         width={3}
-        style={{ alignItems: 'center', marginBottom: 60 }}
+        style={{ marginBottom: 60 }}
       />
       <Barcode
         format="CODE128B"
         value="0000002021954Q"
         text="0000002021954Q"
         width={2}
-        style={{ alignItems: 'center' }}
       />
     </View>
   );

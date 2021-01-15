@@ -33,6 +33,7 @@ export interface BarcodeProps {
   text?: React.ReactNode;
   textStyle?: TextStyle;
   style?: ViewStyle;
+  onError?: (err: any) => void;
 }
 
 export default function Barcode(props: BarcodeProps): JSX.Element;
