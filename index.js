@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import PropTypes from 'prop-types';
 import { View, Text } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 import barcodes from 'jsbarcode/src/barcodes';
@@ -107,6 +108,19 @@ const Barcode = ({
       {text && <Text style={[{ textAlign: 'center' }, textStyle]}>{text}</Text>}
     </View>
   );
+};
+
+Barcode.propTypes = {
+  value: PropTypes.string.isRequired,
+  width: PropTypes.number,
+  height: PropTypes.number,
+  format: PropTypes.oneOf(Object.keys(barcodes)).isRequired,
+  lineColor: PropTypes.string,
+  background: PropTypes.string,
+  text: PropTypes.node,
+  textStyle: PropTypes.object,
+  style: PropTypes.object,
+  onError: PropTypes.func,
 };
 
 export default Barcode;

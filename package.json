@@ -1,6 +1,6 @@
 {
   "name": "@kichiyaki/react-native-barcode-generator",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "license": "MIT",
   "main": "index.js",
   "typings": "index.d.ts",
@@ -22,7 +22,8 @@
     "react-native-svg": "^12.1.0"
   },
   "peerDependencies": {
-    "react-native": ">=0.62.0"
+    "react-native": ">=0.62.0",
+    "prop-types": ">=15.5.0"
   },
   "devDependencies": {
     "@react-native-community/eslint-config": "^2.0.0",
