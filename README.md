@@ -1,6 +1,6 @@
 # @kichiyaki/react-native-barcode-generator
 
-![Screenshot](/screenshots/example.png?raw=true)
+![Screenshot](/images/example.png?raw=true)
 
 A React-Native component for generating barcodes.
 
