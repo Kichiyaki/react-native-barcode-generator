@@ -22,7 +22,7 @@ yarn add @kichiyaki/react-native-barcode-generator
 
 | Prop       | Type        | Description                                            |
 | ---------- | ----------- | ------------------------------------------------------ |
-| value      | `string`    | -----------                                            |
+| value      | `string`    | the text to be encoded                                 |
 | width      | `number`    | the width of a single bar                              |
 | height     | `number`    | the height of the barcode                              |
 | format     | `string`    | select which [barcode type](#supported-formats) to use |
