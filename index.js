@@ -15,6 +15,7 @@ const Barcode = ({
   textStyle,
   style,
   onError,
+  maxWidth,
 }) => {
   const drawRect = (x, y, width, height) => {
     return `M${x},${y}h${width}v${height}h-${width}z`;
@@ -24,19 +25,20 @@ const Barcode = ({
     const rects = [];
     const { data: binary } = encoded;
 
+    const singleBarWidth = maxWidth ? maxWidth / binary.length : width;
     let barWidth = 0;
     let x = 0;
     let yFrom = 0;
 
     for (let b = 0; b < binary.length; b++) {
-      x = b * width;
+      x = b * singleBarWidth;
       if (binary[b] === '1') {
         barWidth++;
       } else if (barWidth > 0) {
         rects[rects.length] = drawRect(
-          x - width * barWidth,
+          x - singleBarWidth * barWidth,
           yFrom,
-          width * barWidth,
+          singleBarWidth * barWidth,
           height,
         );
         barWidth = 0;
@@ -45,9 +47,9 @@ const Barcode = ({
 
     if (barWidth > 0) {
       rects[rects.length] = drawRect(
-        x - width * (barWidth - 1),
+        x - singleBarWidth * (barWidth - 1),
         yFrom,
-        width * barWidth,
+        singleBarWidth * barWidth,
         height,
       );
     }
@@ -82,7 +84,7 @@ const Barcode = ({
       const encoded = encode(value, encoder);
       return {
         bars: drawSvgBarCode(encoded),
-        barCodeWidth: encoded.data.length * width,
+        barCodeWidth: maxWidth ?? encoded.data.length * width,
       };
     } catch (error) {
       if (__DEV__) {
@@ -96,7 +98,7 @@ const Barcode = ({
       bars: [],
       barCodeWidth: 0,
     };
-  }, [value, width, height, format, lineColor, background]);
+  }, [value, width, height, format, lineColor, background, maxWidth]);
 
   return (
     <View
@@ -112,9 +114,10 @@ const Barcode = ({
 
 Barcode.propTypes = {
   value: PropTypes.string.isRequired,
+  format: PropTypes.oneOf(Object.keys(barcodes)),
   width: PropTypes.number,
+  maxWidth: PropTypes.number,
   height: PropTypes.number,
-  format: PropTypes.oneOf(Object.keys(barcodes)).isRequired,
   lineColor: PropTypes.string,
   background: PropTypes.string,
   text: PropTypes.node,

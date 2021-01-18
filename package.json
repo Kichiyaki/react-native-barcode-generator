@@ -18,12 +18,12 @@
     "barcode"
   ],
   "dependencies": {
-    "jsbarcode": "^3.8.0",
-    "react-native-svg": "^12.1.0"
+    "jsbarcode": "^3.8.0"
   },
   "peerDependencies": {
     "react-native": ">=0.62.0",
-    "prop-types": ">=15.5.0"
+    "prop-types": ">=15.5.0",
+    "react-native-svg": ">=12.1.0"
   },
   "devDependencies": {
     "@react-native-community/eslint-config": "^2.0.0",

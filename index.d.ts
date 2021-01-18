@@ -25,9 +25,10 @@ export type Format =
 
 export interface BarcodeProps {
   value: string;
-  width: number;
-  height: number;
-  format: Format;
+  width?: number;
+  maxWidth?: number;
+  height?: number;
+  format?: Format;
   lineColor?: string;
   background?: string;
   text?: React.ReactNode;

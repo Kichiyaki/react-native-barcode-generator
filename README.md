@@ -9,13 +9,13 @@ A React-Native component for generating barcodes.
 Using npm:
 
 ```shell
-npm install --save @kichiyaki/react-native-barcode-generator
+npm install --save react-native-svg @kichiyaki/react-native-barcode-generator
 ```
 
 or using yarn:
 
 ```shell
-yarn add @kichiyaki/react-native-barcode-generator
+yarn add react-native-svg @kichiyaki/react-native-barcode-generator
 ```
 
 ## Properties
@@ -24,6 +24,7 @@ yarn add @kichiyaki/react-native-barcode-generator
 | ---------- | ----------- | ------------------------------------------------------ |
 | value      | `string`    | the text to be encoded                                 |
 | width      | `number`    | the width of a single bar                              |
+| maxWidth   | `number`    | the max width of the barcode                           |
 | height     | `number`    | the height of the barcode                              |
 | format     | `string`    | select which [barcode type](#supported-formats) to use |
 | lineColor  | `string`    | set the color of a single bar                          |
