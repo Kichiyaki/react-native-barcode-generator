@@ -25,7 +25,11 @@ const Barcode = ({
     const rects = [];
     const { data: binary } = encoded;
 
-    const singleBarWidth = maxWidth ? maxWidth / binary.length : width;
+    const barCodeWidth = binary.length * width;
+    const singleBarWidth =
+      typeof maxWidth === 'number' && barCodeWidth > maxWidth
+        ? maxWidth / binary.length
+        : width;
     let barWidth = 0;
     let x = 0;
     let yFrom = 0;
