@@ -58,7 +58,7 @@ const Barcode = ({
       );
     }
 
-    return { bars: rects };
+    return rects;
   };
 
   const encode = (text, Encoder) => {

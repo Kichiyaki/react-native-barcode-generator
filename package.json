@@ -1,6 +1,6 @@
 {
   "name": "@kichiyaki/react-native-barcode-generator",
-  "version": "0.6.5",
+  "version": "0.6.6",
   "license": "MIT",
   "main": "index.js",
   "typings": "index.d.ts",
