@@ -58,7 +58,7 @@ const Barcode = ({
       );
     }
 
-    return rects;
+    return { bars: rects };
   };
 
   const encode = (text, Encoder) => {
@@ -86,9 +86,13 @@ const Barcode = ({
         throw new Error('Invalid barcode format.');
       }
       const encoded = encode(value, encoder);
+      const barCodeWidth = encoded.data.length * width;
       return {
         bars: drawSvgBarCode(encoded),
-        barCodeWidth: maxWidth ?? encoded.data.length * width,
+        barCodeWidth:
+          typeof maxWidth === 'number' && maxWidth > barCodeWidth
+            ? maxWidth
+            : barCodeWidth,
       };
     } catch (error) {
       if (__DEV__) {
