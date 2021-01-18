@@ -90,7 +90,7 @@ const Barcode = ({
       return {
         bars: drawSvgBarCode(encoded),
         barCodeWidth:
-          typeof maxWidth === 'number' && maxWidth > barCodeWidth
+          typeof maxWidth === 'number' && barCodeWidth > maxWidth
             ? maxWidth
             : barCodeWidth,
       };
