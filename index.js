@@ -15,6 +15,7 @@ const Barcode = ({
   textStyle,
   style,
   onError,
+  getRef,
   maxWidth,
 }) => {
   const drawRect = (x, y, width, height) => {
@@ -112,7 +113,7 @@ const Barcode = ({
     <View
       style={[{ backgroundColor: background, alignItems: 'center' }, style]}
     >
-      <Svg height={height} width={barCodeWidth} fill={lineColor}>
+      <Svg ref={getRef} height={height} width={barCodeWidth} fill={lineColor}>
         <Path d={bars.join(' ')} />
       </Svg>
       {text && <Text style={[{ textAlign: 'center' }, textStyle]}>{text}</Text>}
@@ -132,6 +133,7 @@ Barcode.propTypes = {
   textStyle: PropTypes.object,
   style: PropTypes.object,
   onError: PropTypes.func,
+  getRef: PropTypes.func,
 };
 
 export default Barcode;
